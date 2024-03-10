@@ -29,7 +29,7 @@ th[scope='col'] {
   color: #fff;
 }
 
-th[scope='row'] {
+td[scope='row'] {
   background-color: #d6ecd4;
 }
 

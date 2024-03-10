@@ -3,19 +3,20 @@
 <table>
   <thead>
     <tr>
-      <th>グループ</th>
-      <th>棚番</th>
-      <th>JANコード</th>
-      <th>商品名</th>
-      <th>入数</th>
-      <th>ピッキング数量</th>
+      <th scope='col'>グループ</th>
+      <th scope='col'>棚番</th>
+      <th scope='col'>JANコード</th>
+      <th scope='col'>商品名</th>
+      <th scope='col'>入数</th>
+      <th scope='col'>ピッキング数量</th>
+      <th scope='col'>pick</th>
     </tr>
   </thead>
   <tbody>
     <% @pickitems.each do |pickitem| %>
       <tr>
         <td><%= pickitem.pickgroup %></td>
-        <td><%= pickitem.tana %></td>
+        <td scope='row'><%= pickitem.tana %></td>
         <td><%= pickitem.jan %></td>
         <td><%= pickitem.shohinmei %></td>
         <td><%= pickitem.mklot %></td>
