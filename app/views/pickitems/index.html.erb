@@ -3,6 +3,7 @@
 <table>
   <thead>
     <tr>
+      <th>グループ</th>
       <th>棚番</th>
       <th>JANコード</th>
       <th>商品名</th>
@@ -13,6 +14,7 @@
   <tbody>
     <% @pickitems.each do |pickitem| %>
       <tr>
+        <td><%= pickitem.pickgroup %></td>
         <td><%= pickitem.tana %></td>
         <td><%= pickitem.jan %></td>
         <td><%= pickitem.shohinmei %></td>
