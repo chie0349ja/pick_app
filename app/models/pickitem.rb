@@ -1,0 +1,2 @@
+class Pickitem < ApplicationRecord
+end

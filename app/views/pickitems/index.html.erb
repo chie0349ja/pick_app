@@ -1,0 +1,29 @@
+<h1>ピッキングアプリ</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>棚番</th>
+      <th>JANコード</th>
+      <th>商品名</th>
+      <th>入数</th>
+      <th>ピッキング数量</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @pickitems.each do |pickitem| %>
+      <tr>
+        <td><%= pickitem.tana %></td>
+        <td><%= pickitem.jan %></td>
+        <td><%= pickitem.shohinmei %></td>
+        <td><%= pickitem.totalpick %></td>
+        <td>
+          <%#= form_for pickitem, url: shelf_item_path(pickitem), method: :patch do |f| %>
+            <%#= f.number_field :totalpick, min: 0 %>
+            <%#= f.submit "更新" %>
+          <%# end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
