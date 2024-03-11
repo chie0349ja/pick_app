@@ -74,21 +74,3 @@ table {
   text-align: left;
   font-size: 20px;
 }
-
-.shipping_records-input{
-  width: 60%;
-  background-color: green;
-  border: none;
-  font-size: 100px;
-  color: #fff;
-  text-align: right;
-  padding-right: 50px;
-}
-
-.shipping_records-submit{
-  background-color: rgb(216, 202, 0);
-  border-color: #ffffff85;
-  font-size: 50px;
-  color: black;
-  text-align: center;
-}

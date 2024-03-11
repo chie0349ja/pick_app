@@ -30,6 +30,9 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_10_103951) do
     t.integer "pick03"
     t.integer "totalpick"
     t.integer "pickgroup"
+    t.string "shipper"
+    t.integer "shipping_records"
+    t.datetime "shipping_datetime"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

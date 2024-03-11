@@ -1,4 +1,4 @@
-<h1>ピッキングアプリ</h1>
+<h1>オムニ集品用ピッキングリスト</h1>
 
 <table>
   <thead>
@@ -15,14 +15,14 @@
   <tbody>
     <% @pickitems.each do |pickitem| %>
       <tr>
-        <td><%= pickitem.pickgroup %></td>
-        <td scope='row'><%= pickitem.tana %></td>
-        <td><%= pickitem.jan %></td>
-        <td><%= pickitem.shohinmei %></td>
-        <td><%= pickitem.mklot %></td>
-        <td><%= pickitem.totalpick %></td>
-        <td>
-          <%= link_to "pick", "#" %>
+        <td class="pickgroup"><%= pickitem.pickgroup %></td>
+        <td scope='row'><%= pickitem.tana.insert(1,"-").insert(4,"-").insert(7,"-") %></td>
+        <td class="jan"><%= pickitem.jan.to_s %></td>
+        <td class="shohinmei"><%= pickitem.shohinmei %></td>
+        <td class="mklot"><%= pickitem.mklot %></td>
+        <td class="totalpick"><%= pickitem.totalpick %></td>
+        <td class="pick">
+          <%= link_to "pick", pickitem_path(pickitem.id), method: :get %>
         </td>
       </tr>
     <% end %>

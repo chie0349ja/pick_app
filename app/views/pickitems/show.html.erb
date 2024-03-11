@@ -1,0 +1,32 @@
+<h1>アイテム詳細</h1>
+
+<table>
+  <tbody>
+    <tr>
+      <th scope='col'>グループ</th>
+      <td class="data"><%= @pickitem.pickgroup %></td>
+      <th scope='col'>棚番</th>
+      <td class="data"><%= @pickitem.tana.insert(1,"-").insert(4,"-").insert(7,"-") %></td>
+    </tr>
+    <tr>
+      <th scope='col'>JAN4</th>
+      <td class="data"><%= @pickitem.jan[-4..-1] %></td>
+      <th scope='col'>商品名</th>
+      <td class="data_shohinmei"><%= @pickitem.shohinmei %></td>
+    </tr>
+    <tr>
+      <th scope='col'>入数</th>
+      <td class="data"><%= @pickitem.mklot %></td>
+      <th scope='col'>数量</th>
+      <td class="data_pick">
+        <%= form_tag("#", method: :post, class:"form_shipping_records") do %>
+          <%= hidden_field_tag :pickitem_id, @pickitem.id %>
+          <%= text_field_tag :shipping_records, @pickitem.totalpick, class: "shipping_records-input" %>
+          <%= submit_tag "完了", class: "shipping_records-submit" %>
+        <% end %>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<%= link_to "戻る", root_path %>
