@@ -9,12 +9,12 @@ class PickitemsController < ApplicationController
 
   def update
     pickitem = Pickitem.find(params[:id])
-    binding.pry
     pickitem.update(pickitem_params)
+    redirect_to pickitems_path
   end
 
   private
   def pickitem_params
-    params.require(:pickitem).permit(:pickitem_id, :shipper, :shipping_records, :shipping_datetime)
+    params.require(:pickitem).permit(:shipper, :shipping_records, :shipping_datetime)
   end
 end 
