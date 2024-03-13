@@ -19,10 +19,10 @@
       <td class="data"><%= @pickitem.mklot %></td>
       <th scope='col'>数量</th>
       <td class="data_pick">
-        <%= form_tag(pickitem_path(@pickitem), method: :patch, class:"form_shipping_records") do %>
-          <%= hidden_field_tag :pickitem_id, @pickitem.id %>
-          <%= text_field_tag :shipping_records, @pickitem.totalpick, class: "shipping_records-input" %>
-          <%= submit_tag "完了", class: "shipping_records-submit" %>
+        <%= form_with(model: @pickitem, local: true, class: "form_shipping_records") do |f| %>
+          <%= f.hidden_field :pickitem_id, value: @pickitem.id %>
+          <%= f.text_field :shipping_records, placeholder:@pickitem.totalpick, class: "shipping_records-input" %>
+          <%= f.submit "完了", class: "shipping_records-submit" %>
         <% end %>
       </td>
     </tr>
