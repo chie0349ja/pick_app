@@ -19,7 +19,7 @@
       <td class="data"><%= @pickitem.mklot %></td>
       <th scope='col'>数量</th>
       <td class="data_pick">
-        <%= form_tag("#", method: :post, class:"form_shipping_records") do %>
+        <%= form_tag(pickitem_path(@pickitem), method: :patch, class:"form_shipping_records") do %>
           <%= hidden_field_tag :pickitem_id, @pickitem.id %>
           <%= text_field_tag :shipping_records, @pickitem.totalpick, class: "shipping_records-input" %>
           <%= submit_tag "完了", class: "shipping_records-submit" %>
