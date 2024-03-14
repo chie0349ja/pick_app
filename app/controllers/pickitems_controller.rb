@@ -1,6 +1,6 @@
 class PickitemsController < ApplicationController
   def index
-    @pickitems = Pickitem.all
+    @pickitems = Pickitem.order(updated_at: :asc, tana: :asc,)
   end
 
   def show

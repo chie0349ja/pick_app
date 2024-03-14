@@ -57,6 +57,10 @@ table {
   text-align: right;
 }
 
+tr.has-shipping-records{
+  background-color: rgba(255, 127, 80, 0.703);
+}
+
 /*show画面*/
 .data{
   font-size: 40px;

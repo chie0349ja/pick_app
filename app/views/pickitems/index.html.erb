@@ -3,18 +3,19 @@
 <table>
   <thead>
     <tr>
-      <th scope='col'>グループ</th>
-      <th scope='col'>棚番</th>
-      <th scope='col'>JANコード</th>
-      <th scope='col'>商品名</th>
-      <th scope='col'>入数</th>
-      <th scope='col'>ピッキング数量</th>
-      <th scope='col'>pick</th>
+      <th scope="col">グループ</th>
+      <th scope="col">棚番</th>
+      <th scope="col">JANコード</th>
+      <th scope="col">商品名</th>
+      <th scope="col">入数</th>
+      <th scope="col">ピッキング数量</th>
+      <th scope="col">pick</th>
+      <th scope="col">出荷数</th>
     </tr>
   </thead>
   <tbody>
     <% @pickitems.each do |pickitem| %>
-      <tr>
+      <tr <% if pickitem.shipping_records.present?%> class="has-shipping-records" <% end %>>
         <td class="pickgroup"><%= pickitem.pickgroup %></td>
         <td scope='row'><%= pickitem.tana.insert(1,"-").insert(4,"-").insert(7,"-") %></td>
         <td class="jan"><%= pickitem.jan.to_s %></td>
@@ -24,6 +25,7 @@
         <td class="pick">
           <%= link_to "pick", pickitem_path(pickitem.id), method: :get %>
         </td>
+        <td class="shipping_records"><%= pickitem.shipping_records %></td>
       </tr>
     <% end %>
   </tbody>
