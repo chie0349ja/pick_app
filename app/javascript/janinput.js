@@ -11,7 +11,6 @@ function post (){
         if (XHR.status === 200) {
           // レスポンスを受け取り、画面に表示する
           document.body.innerHTML = XHR.responseText;
-          addEventListeners();
         } else {
           // エラー処理
           console.error('Request failed');
@@ -27,6 +26,6 @@ function post (){
 };
 
 window.addEventListener('DOMContentLoaded', post);
-window.onload = function() {
-  post();
-};
+//window.onload = function() {
+//  post();
+//};
