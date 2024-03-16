@@ -13,6 +13,17 @@ class PickitemsController < ApplicationController
     redirect_to pickitems_path
   end
 
+  def show_by_jan
+    jan = params[:content]
+    @pickitem = Pickitem.find_by(jan: jan)
+    if @pickitem
+      redirect_to pickitem_path(@pickitem)
+    else
+      flash[:alert] = "該当する商品が見つかりませんでした"
+      redirect_to root_path
+    end
+  end
+
   private
   def pickitem_params
     params.require(:pickitem).permit(:shipper, :shipping_records, :shipping_datetime)

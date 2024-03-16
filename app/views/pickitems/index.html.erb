@@ -1,6 +1,9 @@
 <h1>オムニ集品用ピッキングリスト</h1>
 
-<input type="text" id="barcodeInput" autofocus>
+<%= form_with url:  "/pickitems/show_by_jan", method: :post, id: "form" do |form| %>
+  <%= form.text_field :content , id: "content"%>
+  <%= form.submit '照合' , id: "submit" %>
+<% end %>
 
 <table>
   <thead>
