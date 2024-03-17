@@ -1,24 +1,28 @@
-# README
+# オムニ集品アプリ
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+イシダさいまると似た動きのピッキングシステム。事務所の端末でサーバー起動し、イシダのタブレット端末でローカルサーバーへアクセスして動かす。
 
-Things you may want to cover:
 
-* Ruby version
 
-* System dependencies
+### 実装済み
+---
+* 一覧画面でスキャナで読み込んだJANコードと照合してピッキング画面へ
 
-* Configuration
+* ピッキング画面で数量入力せずに完了すると満数として送信
 
-* Database creation
+* 完了ボタンを押して一覧画面へ戻ると出荷数が入力され、更新日時の昇順＞棚番順に並ぶのですでにピッキングしたレコードは下に回る（更新日時が新しいものが一番下にくる）
 
-* Database initialization
+* 出荷数が入力したレコードは背景色がピンクに変わる
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+### 実装予定
+---
 
-* ...
+* 初期画面から一覧画面へ移動するようにする。その際にshipperを宣言する（イシダのバーコード使う？）
+
+* 複数人でピッキングするため、グループNoを選択してフィルタリングしてレコードを分割する（フィルタリングなしも含める）
+
+* ピッキング画面の完了時に、shipper、shipping_datetime: nil,を入力する
+
+* 

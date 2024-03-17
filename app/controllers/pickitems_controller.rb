@@ -9,7 +9,11 @@ class PickitemsController < ApplicationController
 
   def update
     pickitem = Pickitem.find(params[:id])
-    pickitem.update(pickitem_params)
+    if pickitem.shipping_records.present?
+      pickitem.update(pickitem_params)
+    else
+      pickitem.update(pickitem_params.merge(shipping_records: pickitem.totalpick))
+    end
     redirect_to pickitems_path
   end
 
