@@ -3,7 +3,8 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  root to: 'pickitems#index'
+  root to: 'pickitems#start'
   resources :pickitems, only: [:index, :show, :update]
   post '/pickitems/show_by_jan', to: 'pickitems#show_by_jan', as: 'show_by_jan'
+  
 end
