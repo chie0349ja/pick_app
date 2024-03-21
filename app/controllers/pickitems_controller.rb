@@ -25,7 +25,7 @@ class PickitemsController < ApplicationController
       redirect_to pickitem_path(@pickitem)
     else
       flash[:alert] = "該当する商品が見つかりませんでした"
-      redirect_to root_path
+      redirect_to pickitems_path
     end
   end
 
