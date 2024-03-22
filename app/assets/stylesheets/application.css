@@ -68,7 +68,7 @@
   font-size: 24px;
   font-weight: 600;
 }
-解説
+
 
 
 /*index画面*/
@@ -115,6 +115,19 @@ table {
 
 tr.has-shipping-records{
   background-color: rgba(255, 127, 80, 0.703);
+}
+
+.purchase-btn {
+  width: 85px;
+  bottom: 10px;
+  right: 10px;
+  position: fixed;
+  z-index: 9999;
+  padding: 10px;
+}
+
+.purchase-btn-icon:hover {
+  width: 90%;
 }
 
 /*show画面*/
