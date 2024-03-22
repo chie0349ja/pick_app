@@ -126,10 +126,6 @@ tr.has-shipping-records{
   padding: 10px;
 }
 
-.purchase-btn-icon:hover {
-  width: 90%;
-}
-
 /*show画面*/
 .data{
   font-size: 40px;
