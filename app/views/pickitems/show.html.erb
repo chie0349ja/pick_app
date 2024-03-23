@@ -31,7 +31,6 @@
   </tbody>
 </table>
 
-<%= link_to "戻る", pickitems_path(shipper: @pickitem.shipper, pickgroup: @pickitem.pickgroup) %>
-
-<div><%= @pickitem.shipper %></div>
-<div><%= @pickitem.pickgroup %></div>
+<%= button_to "戻る", pickitems_path, method: :post, params: { shipper: @pickitem.shipper, pickgroup: @pickitem.pickgroup }, class: "btn btn-primary" %>
+<div><% @pickitem.shipper %></div>
+<div><% @pickitem.pickgroup %></div>
