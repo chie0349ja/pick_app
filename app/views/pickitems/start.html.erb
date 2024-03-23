@@ -6,9 +6,9 @@
         <div class="hero-text__main">しゅうひん君</div>
         
     <%= form_with url:pickitems_path, method: :get, class:"hero-text__sub" do |form| %>
-      <%= form.label :query, "担当者コード入力" %>
+      <%= form.label :shipper, "担当者コード入力" %>
       <%= form.text_field :shipper %>
-      <%= form.label :query, "ピッキングNo入力" %>
+      <%= form.label :pickgroup, "ピッキングNo入力" %>
       <%= form.text_field :pickgroup %>
       <%= form.submit "Start", class:"service-btn" %>
     <% end %> 
