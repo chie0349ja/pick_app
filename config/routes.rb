@@ -6,5 +6,6 @@ Rails.application.routes.draw do
   root to: 'pickitems#start'
   resources :pickitems, only: [:index, :show, :update]
   post '/pickitems/show_by_jan', to: 'pickitems#show_by_jan', as: 'show_by_jan'
+  post '/pickitems', to: 'pickitems#index'
   
 end
