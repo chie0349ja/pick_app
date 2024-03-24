@@ -3,16 +3,19 @@
     <div class="start-image"><%= image_tag("pickapp.jpg", class:"pickapp-icon") %></div>
     <div class="start-items">
       <div class="start-text">
-        <div class="start-text__main">しゅうひん君</div>
-        
-    <%= form_with url:pickitems_path, method: :post, class:"start-text__sub", local: true do |form| %>
-      <%= form.label :shipper, "担当者コード入力" %>
-      <%= form.text_field :shipper, type: "number", class:"start-input" %>
-      <%= form.label :pickgroup, "ピッキングNo選択" %>
-      <%= form.select :pickgroup, options_for_select(Pickitem.all.group_by(&:pickgroup).map { |group, items| ["#{group} - (#{items.count}行)", group] }), prompt: "選択してください", class:"start-input" %>
-      <%= form.submit "Start", class:"service-btn" %>
-    <% end %> 
+        <div class="start-text__main">しゅうひん君</div>       
+        <%= form_with url:pickitems_path, method: :post, class:"start-text__sub", local: true do |form| %>
+        <div class="start-text__">
+          <%= form.label :shipper, "担当者コード入力" %>
+          <%= form.text_field :shipper, type: "number", class:"start-input" %>
+        </div>
+        <div class="start-text__">
+          <%= form.label :pickgroup, "ピッキングNo選択" %>
+          <%= form.select :pickgroup, options_for_select(Pickitem.all.group_by(&:pickgroup).map { |group, items| ["#{group} - (#{items.count}行)", group] }), prompt: "選択してください", class:"start-input" %>
+        </div>
+          <%= form.submit "Start", class:"service-btn" %>
+        <% end %> 
+      </div>
     </div>
-    
   </div>
 </div>
