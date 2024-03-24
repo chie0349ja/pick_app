@@ -22,6 +22,7 @@
 }
 
 .start-image {
+  width: 100vw;
   position:absolute;
   object-fit: cover;
   opacity: 30%;
