@@ -6,7 +6,7 @@
       <th scope='col'>グループ</th>
       <td class="data"><%= @pickitem.pickgroup %></td>
       <th scope='col'>棚番</th>
-      <td class="data"><%= @pickitem.tana.insert(1,"-").insert(4,"-").insert(7,"-") %></td>
+      <td class="data"><%= "#{@pickitem.tana[1..2]}-#{@pickitem.tana[3..4]}-#{@pickitem.tana[5..6]}" %></td>
     </tr>
     <tr>
       <th scope='col'>JAN4</th>

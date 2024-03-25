@@ -130,7 +130,7 @@ tr.has-shipping-records{
 .purchase-btn {
   width: 85px;
   bottom: 10px;
-  right: 10px;
+  left: 10px;
   position: fixed;
   z-index: 9999;
   padding: 10px;
@@ -145,7 +145,7 @@ tr.has-shipping-records{
 .data_pick{
   font-size: 100px;
   font-weight: bold;
-  background-color: green;
+  background-color: #d6ecd4;
   color: #fff;
 }
 
@@ -155,8 +155,8 @@ tr.has-shipping-records{
 }
 
 .shipping_records-input{
+  background-color: #d6ecd4;
   width: 60%;
-  background-color: green;
   border: none;
   font-size: 100px;
   color: #fff;
@@ -165,9 +165,10 @@ tr.has-shipping-records{
 }
 
 .shipping_records-submit{
-  background-color: rgb(216, 202, 0);
+  background-color: rgb(241, 235, 150);
   border-color: #ffffff85;
   font-size: 50px;
   color: black;
   text-align: center;
+  padding: 10px;
 }

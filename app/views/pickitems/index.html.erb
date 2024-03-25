@@ -22,7 +22,7 @@
     <% @pickitems.each do |pickitem| %>
       <tr <% if pickitem.shipping_records.present?%> class="has-shipping-records" <% end %>>
         <td class="pickgroup"><%= pickitem.pickgroup %></td>
-        <td scope='row'><%= pickitem.tana.insert(1,"-").insert(4,"-").insert(7,"-") %></td>
+        <td scope='row'><%= "#{pickitem.tana[1..2]}-#{pickitem.tana[3..4]}-#{pickitem.tana[5..6]}" %></td>
         <td class="jan"><%= pickitem.jan.to_s %></td>
         <td class="shohinmei"><%= pickitem.shohinmei %></td>
         <td class="mklot"><%= pickitem.mklot %></td>
