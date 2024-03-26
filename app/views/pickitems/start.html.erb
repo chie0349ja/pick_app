@@ -7,7 +7,7 @@
         <%= form_with url:pickitems_path, method: :post, class:"start-text__sub", local: true do |form| %>
         <div class="start-text__">
           <%= form.label :shipper, "担当者コード入力" %>
-          <%= form.text_field :shipper, type: "number", class:"start-input" %>
+          <%= form.text_field :shipper, type: "number", class:"start-input", type: "number", required: true %>
         </div>
         <div class="start-text__">
           <%= form.label :pickgroup, "ピッキングNo選択" %>

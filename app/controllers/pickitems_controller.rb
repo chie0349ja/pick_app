@@ -3,13 +3,18 @@ class PickitemsController < ApplicationController
 
 
   def index
-    @pickitems = Pickitem.where(pickgroup: @pickgroup).order(updated_at: :asc, tana: :asc,)
+    if @pickgroup.present?  
+      @pickitems = Pickitem.where(pickgroup: @pickgroup).order(updated_at: :asc, tana: :asc)
       pickitem = @pickitems.first
-      if pickitem.shipper.present?
-        
-      else
-        @pickitems.update_all(shipper: @shipper)
-      end
+    else
+      @pickitems = Pickitem.all.order(pickgroup: :asc, updated_at: :asc, tana: :asc)
+      pickitem = @pickitems.first
+    end
+    if pickitem.shipper.present?
+      
+    else
+      @pickitems.update_all(shipper: @shipper)
+    end
   end
 
   def show
