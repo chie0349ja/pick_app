@@ -26,12 +26,16 @@ class PickitemsController < ApplicationController
     pickitem.shipping_records = pickitem_params[:shipping_records]
     pickitem.shipping_datetime = Time.now
     @pickgroup = pickitem.pickgroup
+    @shipper = pickitem.shipper
+
     if pickitem.shipping_records.present?
       pickitem.update(pickitem_params)
     else
       pickitem.update(pickitem_params.merge(shipping_records: pickitem.totalpick))
     end
-    redirect_to pickitems_path(pickgroup: @pickgroup)
+    session[:@pickgroup] = @pickgroup
+    session[:@shipper] = @shipper
+    redirect_to pickitems_path
   end
 
   def show_by_jan
@@ -49,11 +53,11 @@ class PickitemsController < ApplicationController
 
   private
   def pickitem_params
-    params.require(:pickitem).permit(:shipper, :shipping_records, :shipping_datetime)
+    params.require(:pickitem).permit(:shipper, :shipping_records, :shipping_datetime, :pickgroup)
   end
 
   def set_shipper_and_pickgroup
     @shipper = params[:shipper]
-    @pickgroup = params[:pickgroup]
+    @pickgroup = params[:shipper]
   end
 end 
