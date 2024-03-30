@@ -1,9 +1,16 @@
 <h1>オムニ集品用ピッキングリスト</h1>
 
-<%= form_with url:  "/pickitems/show_by_jan", method: :post, id: "form" do |form| %>
-  <%= form.text_field :content , id: "content", autofocus: true, type: "number", required: true %>
-  <%= form.submit '照合' , id: "submit" %>
-<% end %>
+<div class="top">
+  <%= form_with url:  "/pickitems/show_by_jan", method: :post, id: "form" do |form| %>
+    <%= form.text_field :content , id: "content", autofocus: true, type: "number", required: true, class:"input-jan" %>
+    <%= form.submit '照合' , id: "submit" %>
+  <% end %>
+
+  <div class="records-counts">
+    <div class="record-count">行数：<span class="count-font"><%= @pickitems.count %></span></div>
+    <div class="record-count">残：<span class="count-font"><%= @pickitems.select { |item| item.shipping_records.nil? }.count %></span></div>
+  </div>
+</div>
 
 <table>
   <thead>

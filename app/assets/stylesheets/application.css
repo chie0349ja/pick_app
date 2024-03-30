@@ -136,6 +136,31 @@ tr.has-shipping-records{
   padding: 10px;
 }
 
+.top {
+  display: flex;
+  justify-content:left;
+}
+
+.records-counts {
+  display: flex;
+  justify-content: left;
+  margin-left: 20px;
+}
+
+.record-count {
+  margin-left: 20px;
+}
+
+.count-font {
+  padding:0 10px;
+  border-style: solid;
+  background-color: #f2f8a5;
+}
+
+.input-jan {
+  background-color: #f2f8a5;
+}
+
 /*show画面*/
 .data{
   font-size: 40px;
