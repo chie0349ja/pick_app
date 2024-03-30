@@ -3,7 +3,13 @@ class PickitemsController < ApplicationController
 
 
   def index
-    if @pickgroup.present?  
+    if session[:pickgroup] .nil?
+      #@pickgroupはそのまま
+    else
+      @pickgroup = session[:pickgroup]
+    end
+    
+    if @pickgroup.present?
       @pickitems = Pickitem.where(pickgroup: @pickgroup).order(updated_at: :asc, tana: :asc)
       pickitem = @pickitems.first
     else
@@ -15,6 +21,8 @@ class PickitemsController < ApplicationController
     else
       @pickitems.update_all(shipper: @shipper)
     end
+    session[:pickgroup] = nil
+    session[:shipper] = nil
   end
 
   def show
@@ -33,8 +41,9 @@ class PickitemsController < ApplicationController
     else
       pickitem.update(pickitem_params.merge(shipping_records: pickitem.totalpick))
     end
-    session[:@pickgroup] = @pickgroup
-    session[:@shipper] = @shipper
+
+    session[:pickgroup] = @pickgroup
+    session[:shipper] = @shipper
     redirect_to pickitems_path
   end
 
@@ -58,6 +67,6 @@ class PickitemsController < ApplicationController
 
   def set_shipper_and_pickgroup
     @shipper = params[:shipper]
-    @pickgroup = params[:shipper]
+    @pickgroup = params[:pickgroup]
   end
 end 
