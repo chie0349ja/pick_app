@@ -1,10 +1,6 @@
 <h1>オムニ集品用ピッキングリスト</h1>
 
 <div class="top">
-  <%= form_with url:  "/pickitems/show_by_jan", method: :post, id: "form" do |form| %>
-    <%= form.text_field :content , id: "content", autofocus: true, type: "number", required: true, class:"input-jan" %>
-    <%= form.submit '照合' , id: "submit" %>
-  <% end %>
   <div class="records-counts">
     <div class="record-count">行数：<span class="count-font"><%= @pickitems.count %></span></div>
     <div class="record-count">残：<span class="count-font"><%= @pickitems.select { |item| item.shipping_records.nil? }.count %></span></div>
@@ -41,9 +37,6 @@
         <td class="shohinmei"><%= pickitem.shohinmei %></td>
         <td class="mklot"><%= pickitem.mklot %></td>
         <td class="totalpick"><%= pickitem.totalpick %></td>
-        <td class="pick">
-          <%= link_to "pick", pickitem_path(pickitem.id), method: :get %>
-        </td>
         <td class="shipping_records"><%= pickitem.shipping_records %></td>
       </tr>
     <% end %>

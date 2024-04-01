@@ -161,6 +161,10 @@ tr.has-shipping-records{
   width:auto;
 }
 
+.link-start {
+  margin-left: 20px;
+}
+
 /*show画面*/
 .data{
   font-size: 40px;
