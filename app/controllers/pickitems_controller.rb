@@ -10,9 +10,11 @@ class PickitemsController < ApplicationController
     end
     
     if @pickgroup.present?
+      #@pickgroupで条件抽出
       @pickitems = Pickitem.where(pickgroup: @pickgroup).order(updated_at: :asc, tana: :asc)
       pickitem = @pickitems.first
     else
+      #@pickgroupに値がないので全レコード抽出
       @pickitems = Pickitem.all.order(pickgroup: :asc, updated_at: :asc, tana: :asc)
       pickitem = @pickitems.first
     end
@@ -21,8 +23,8 @@ class PickitemsController < ApplicationController
     else
       @pickitems.update_all(shipper: @shipper)
     end
-    session[:pickgroup] = nil
-    session[:shipper] = nil
+    #session[:pickgroup] = nil #こうすると次に更新ボタンを押すと@pickgroup.present?がfalseとなる
+    #session[:shipper] = nil   
   end
 
   def show
