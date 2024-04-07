@@ -11,7 +11,7 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2024_03_10_103951) do
-  create_table "pickitems", charset: "utf8mb4", force: :cascade do |t|
+  create_table "pickitems", charset: "utf8mb3", force: :cascade do |t|
     t.integer "no"
     t.string "nouhinbi"
     t.string "tana"
