@@ -34,6 +34,7 @@ https://pick-app.onrender.com
 ### 実装予定
 ---
 
+* 日付を選択して必要なピックデータを呼び出すstart画面
 * バリデーション、正規表現
 * 閲覧用のstart画面とindex画面
 * 単体テスト、結合テスト（Rspec）
