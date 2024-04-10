@@ -1,9 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const selectNouhinbi = document.getElementById("pickitem_nouhinnbi");
-  const selectPickgroup = document.getElementById("pickitem_pickgroup");
+  const selectNouhinbi = document.getElementById("nouhinbi");
+  const selectPickgroup = document.getElementById("pickgroup");
 
   selectNouhinbi.addEventListener("change", () => {
     const nouhinbi = selectNouhinbi.value;
+    console.log("納品日が選択された");
     fetch(`/pickitems/pickgroups?nouhinbi=${nouhinbi}`)
     .then(response => response.json())
     .then(data => {
@@ -14,6 +15,9 @@ document.addEventListener("DOMContentLoaded", () => {
         opt.innerHTML = option[0];
         selectPickgroup.appendChild(opt);
       });
+    })
+    .catch(error => {
+      console.error("ピッキンググループデータの取得エラー:", error);
     });
   });
 });

@@ -9,8 +9,8 @@
         <div class="start-text__main">しゅうひん君</div>       
         <%= form_with url:pickitems_path, method: :post, class:"start-text__sub", local: true do |form| %>
         <div class="start-text__">
-          <%= form.select :created_at,options_for_select(Pickitem.all.group_by{ |item| item.nouhinbi }.sort_by{ |to_date, _| to_date }.reverse),
-            class:"start-input", prompt: "納品日を選択してください", required: true %>
+          <%= form.select :nouhinbi,options_for_select(Pickitem.all.group_by{ |item| item.nouhinbi }.sort_by{ |to_date, _| to_date }.reverse),
+            class:"start-input", prompt: "納品日を選択してください", required: true, id: "nouhinbi" %>
         </div>
         <div class="start-text__">
           <%= form.label :shipper, "担当者コード入力" %>
