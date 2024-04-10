@@ -1,7 +1,6 @@
 class PickitemsController < ApplicationController
   before_action :set_shipper_and_pickgroup, only: [:index,:show,:update,:show_by_jan]
 
-
   def index
     if session[:pickgroup] .nil?
       #@pickgroupはそのまま
@@ -62,13 +61,21 @@ class PickitemsController < ApplicationController
     end
   end
 
+  def pickgroups
+    nouhinbi = params[:nouhinbi]
+    pickgroups = Pickitem.where(nouhinbi: nouhinbi).pluck(:pickgroup).uniq
+    options = pickitem.map { |group| ["#{group} - (#{Pickitem.where(nouhinbi: nouhinbi, pickgroup: group).count} 行 )", group]}
+    render json: options
+  end
+
   private
   def pickitem_params
-    params.require(:pickitem).permit(:shipper, :shipping_records, :shipping_datetime, :pickgroup)
+    params.require(:pickitem).permit(:shipper, :shipping_records, :shipping_datetime, :pickgroup, :nouhinbi)
   end
 
   def set_shipper_and_pickgroup
     @shipper = params[:shipper]
     @pickgroup = params[:pickgroup]
+    @nouhinbi = params[:nouhinbi]
   end
 end 
