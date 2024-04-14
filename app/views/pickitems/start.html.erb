@@ -18,7 +18,11 @@
         </div>
         <div class="start-text__">
           <%= form.label :pickgroup, "ピッキングNo選択" %>
-          <%= form.select :pickgroup, options_for_select(Pickitem.all.group_by(&:pickgroup).sort_by{ |group, items| group}.map { |group, items| ["#{group} - (#{items.count}行)", group] }), prompt: "選択してください", class:"start-input" %>
+          <% if @options.present? %>
+            <%= form.select :pickgroup, options_for_select(@options).sort_by{ |group, items| group}.map { |group, items| ["#{group} - (#{items.count}行)", group] }, prompt: "選択してください", class:"start-input" %>
+          <% else %>
+            <%= form.select :pickgroup, options_for_select(Pickitem.all.group_by(&:pickgroup).sort_by{ |group, items| group}.map { |group, items| ["#{group} - (#{items.count}行)", group] }), prompt: "選択してください", class:"start-input" %>
+          <% end %>
         </div>
           <%= form.submit "Start", class:"service-btn" %>
         <% end %> 

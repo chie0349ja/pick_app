@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+  console.log("DOMContentLoadedイベントが発火しました");
   const selectNouhinbi = document.getElementById("nouhinbi");
   const selectPickgroup = document.getElementById("pickgroup");
 
