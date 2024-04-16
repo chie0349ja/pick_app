@@ -65,7 +65,7 @@ class PickitemsController < ApplicationController
     nouhinbi = params[:nouhinbi]
     pickgroups = Pickitem.where(nouhinbi: nouhinbi).pluck(:pickgroup).uniq
     count_for_pickgroup = Pickitem.where(nouhinbi: nouhinbi, pickgroup: pickgroups).count
-    @options = pickgroups.map { |group| [group, group] }
+    @options = pickgroups.map { |group| [group, count_for_pickgroup] }
     render json: @options
   end
 
