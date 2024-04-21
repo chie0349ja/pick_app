@@ -1,0 +1,31 @@
+
+[1mFrom:[0m /home/momochie0712/pick_app/app/controllers/pickitems_controller.rb:5 PickitemsController#index:
+
+     [1;34m4[0m: [32mdef[0m [1;34mindex[0m
+ =>  [1;34m5[0m:   binding.pry
+     [1;34m6[0m:   [32mif[0m session[[33m:pickgroup[0m] .nil?
+     [1;34m7[0m:     [1;34m#@pickgroupはそのまま[0m
+     [1;34m8[0m:   [32melse[0m
+     [1;34m9[0m:     @pickgroup = session[[33m:pickgroup[0m]
+    [1;34m10[0m:     @nouhinbi = session[[33m:nouhibi[0m]
+    [1;34m11[0m:     @shipper = session[[33m:shipper[0m]
+    [1;34m12[0m:   [32mend[0m
+    [1;34m13[0m:   
+    [1;34m14[0m:   [32mif[0m @pickgroup.present?
+    [1;34m15[0m:     [1;34m#@pickgroupで条件抽出[0m
+    [1;34m16[0m:     @pickitems = [1;34;4mPickitem[0m.where([35mpickgroup[0m: @pickgroup, [35mnouhinbi[0m: @nouhinbi, [35mshipper[0m: @shipper).order([35mupdated_at[0m: [33m:asc[0m, [35mtana[0m: [33m:asc[0m)
+    [1;34m17[0m:     pickitem = @pickitems.first
+    [1;34m18[0m:   [32melse[0m
+    [1;34m19[0m:     [1;34m#@pickgroupに値がないので全レコード抽出[0m
+    [1;34m20[0m:     @pickitems = [1;34;4mPickitem[0m.all.order([35mpickgroup[0m: [33m:asc[0m, [35mupdated_at[0m: [33m:asc[0m, [35mtana[0m: [33m:asc[0m)
+    [1;34m21[0m:     pickitem = @pickitems.first
+    [1;34m22[0m:   [32mend[0m
+    [1;34m23[0m:   [32mif[0m pickitem.shipper.present?
+    [1;34m24[0m:     
+    [1;34m25[0m:   [32melse[0m
+    [1;34m26[0m:     @pickitems.update_all([35mshipper[0m: @shipper)
+    [1;34m27[0m:   [32mend[0m
+    [1;34m28[0m:   [1;34m#session[:pickgroup] = nil #こうすると次に更新ボタンを押すと@pickgroup.present?がfalseとなる[0m
+    [1;34m29[0m:   [1;34m#session[:shipper] = nil   [0m
+    [1;34m30[0m: [32mend[0m
+

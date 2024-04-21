@@ -2,28 +2,33 @@ class PickitemsController < ApplicationController
   before_action :set_shipper_and_pickgroup, only: [:index,:show,:update,:show_by_jan]
 
   def index
-    if session[:pickgroup] .nil?
+    if session[:pickgroup].nil?
       #@pickgroupはそのまま
     else
       @pickgroup = session[:pickgroup]
+      @nouhinbi = session[:nouhinbi]
+      @shipper = session[:shipper]
     end
     
     if @pickgroup.present?
       #@pickgroupで条件抽出
-      @pickitems = Pickitem.where(pickgroup: @pickgroup).order(updated_at: :asc, tana: :asc)
+      @pickitems = Pickitem.where(pickgroup: @pickgroup, nouhinbi: @nouhinbi, shipper: @shipper).order(updated_at: :asc, tana: :asc)
       pickitem = @pickitems.first
+      if pickitem.present? && pickitem.shipper.present?
+
+      else
+        Pickitem.where(pickgroup: @pickgroup, nouhinbi: @nouhinbi).update_all(shipper: @shipper)
+      end
     else
       #@pickgroupに値がないので全レコード抽出
       @pickitems = Pickitem.all.order(pickgroup: :asc, updated_at: :asc, tana: :asc)
       pickitem = @pickitems.first
-    end
-    if pickitem.shipper.present?
-      
-    else
-      @pickitems.update_all(shipper: @shipper)
-    end
-    #session[:pickgroup] = nil #こうすると次に更新ボタンを押すと@pickgroup.present?がfalseとなる
-    #session[:shipper] = nil   
+      if pickitem.present? && pickitem.shipper.present?
+
+      else
+        Pickitem.where(nouhinbi: @nouhinbi).update_all(shipper: @shipper)
+      end
+    end   
   end
 
   def show
@@ -36,6 +41,7 @@ class PickitemsController < ApplicationController
     pickitem.shipping_datetime = Time.now
     @pickgroup = pickitem.pickgroup
     @shipper = pickitem.shipper
+    @nouhinbi = pickitem.nouhinbi
 
     if pickitem.shipping_records.present?
       pickitem.update(pickitem_params)
@@ -45,6 +51,7 @@ class PickitemsController < ApplicationController
 
     session[:pickgroup] = @pickgroup
     session[:shipper] = @shipper
+    session[:nouhinbi] = @nouhinbi
     redirect_to pickitems_path
   end
 
@@ -64,9 +71,11 @@ class PickitemsController < ApplicationController
   def pickgroups
     nouhinbi = params[:nouhinbi]
     pickgroups = Pickitem.where(nouhinbi: nouhinbi).pluck(:pickgroup).uniq
-    count_for_pickgroup = Pickitem.where(nouhinbi: nouhinbi, pickgroup: pickgroups).count
-    @options = pickgroups.map { |group| [group, count_for_pickgroup] }
-    render json: @options
+    @options = pickgroups.map do |group|
+      count_for_pickgroup = Pickitem.where(nouhinbi: nouhinbi, pickgroup: group).count
+      [group, count_for_pickgroup]
+    end
+    render json: @options #[ピッキングNo, 行数]の配列でjsへ渡す
   end
 
   private
