@@ -1,6 +1,6 @@
-class CreatePickitemesOld < ActiveRecord::Migration[7.0]
+class CreatePickitemOlds < ActiveRecord::Migration[7.0]
   def change
-    create_table :pickitemes_olds do |t|
+    create_table :pickitem_olds do |t|
       t.integer :no
       t.string :nouhinbi
       t.string :tana

@@ -10,8 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_04_24_204724) do
-  create_table "pickitemes_olds", charset: "utf8mb3", force: :cascade do |t|
+ActiveRecord::Schema[7.0].define(version: 2024_04_29_001819) do
+  create_table "pickitem_olds", charset: "utf8mb3", force: :cascade do |t|
     t.integer "no"
     t.string "nouhinbi"
     t.string "tana"
