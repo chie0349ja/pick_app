@@ -53,7 +53,10 @@ production:
   <<: *default
   adapter: postgresql
   encoding: utf8
-  url: <%= ENV['DATABASE_URL'] %>
-#  database: pick_app_production
-#  username: pick_app
-#  password: <%= ENV["PICK_APP_DATABASE_PASSWORD"] %>
+#  url: <%= ENV['DATABASE_URL'] %>
+  database: pick_app_production
+  username: pick_app
+  password: <%= ENV["PICK_APP_DATABASE_PASSWORD"] %>
+  host: <%= ENV["PICK_APP_DATABASE_HOST"] %>
+  port: 5432
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
